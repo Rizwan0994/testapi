@@ -49,7 +49,7 @@ const signin= async(req,res)=>{
     if(!matchPassword){
         return res.status(400).json({message:"Invalid Credentaisl"});
     }
-    const token=jwt.sign({email:existingUser.contact,id:existingUser._id},SECRET_KEY);
+    const token=jwt.sign({contact:existingUser.contact,id:existingUser._id},SECRET_KEY);
     res.status(200).json({user:existingUser,token:token});
 
 }
@@ -60,11 +60,11 @@ catch(error){
 }
 }
 
-
 //testing api
 const test=async(req,res)=>{
     const user=await userModel.find({});
     res.status(200).json({user});
    
 }
-module.exports={signup,signin};
+
+module.exports={signup,signin,test};
