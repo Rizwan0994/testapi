@@ -60,4 +60,11 @@ catch(error){
 }
 }
 
+
+//testing api
+const test=async(req,res)=>{
+    const user=await userModel.find({});
+    res.status(200).json({user});
+   
+}
 module.exports={signup,signin};
