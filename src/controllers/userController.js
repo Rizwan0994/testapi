@@ -7,7 +7,7 @@ const signup= async(req, res)=>{
 //Hashed Password
 //Token Generate
 
-const {username,email,password,contact}=req.body;
+const {username,email,address,password,contact}=req.body;
 try{
     const existingUser=await userModel.findOne({contact:contact});
 if(existingUser)
@@ -19,6 +19,7 @@ const hashedPassword= await bcrypt.hash(password,10);
 const result= await userModel.create({
     username:username,
     email:email,
+    address,
     password:hashedPassword,
     contact:contact
 });
