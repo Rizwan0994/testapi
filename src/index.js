@@ -1,6 +1,7 @@
 const express=require("express");
 const app=express();
 const userRouter=require("./routes/userRoutes");
+const scheduleRouter=require("./routes/scheduleRoutes");
 const dotenv=require("dotenv");
 dotenv.config();
 const mongoose=require("mongoose");
@@ -19,6 +20,7 @@ console.log("HTTP Method -"+req.method+", URL - "+req.url);
 next();
 });
 app.use("/users",userRouter);
+app.use("/schedule",scheduleRouter);
 
 app.get("/",(req,res)=>{
     res.send("Welcome to ScrapHub");
