@@ -23,7 +23,7 @@ next();
 
 app.use("/users",userRouter);
 app.use("/schedule",scheduleRouter);
-app.use("feedback",feedbackRouter);
+app.use("/feedback",feedbackRouter);
 
 app.get("/",(req,res)=>{
     res.send("Welcome to ScrapHub");
