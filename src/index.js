@@ -5,7 +5,8 @@ const scheduleRouter=require("./routes/scheduleRoutes");
 const dotenv=require("dotenv");
 dotenv.config();
 const mongoose=require("mongoose");
-const cors=require("cors")
+const cors=require("cors");
+const feedbackRouter = require("./routes/feedbackRoutes");
 
 mongoose.set('strictQuery', true);
 
@@ -19,8 +20,10 @@ app.use((req,res,next)=>{
 console.log("HTTP Method -"+req.method+", URL - "+req.url);
 next();
 });
+
 app.use("/users",userRouter);
 app.use("/schedule",scheduleRouter);
+app.use("feedback",feedbackRouter);
 
 app.get("/",(req,res)=>{
     res.send("Welcome to ScrapHub");
