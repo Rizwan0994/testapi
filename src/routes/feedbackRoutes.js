@@ -3,5 +3,5 @@ const { submitfeeback } = require("../controllers/feedbackController");
 const auth = require("../middlewares/auth");
 const feedbackRouter=express.Router()
 
-feedbackRouter.post("/",auth,submitfeeback)
+feedbackRouter.post("/",submitfeeback)
 module.exports=feedbackRouter
