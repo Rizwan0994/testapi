@@ -19,7 +19,7 @@ collectorSchema.methods.comparePassword = function (password) {
 collectorSchema.methods.generateAuthToken = function () {
   const token = jwt.sign(
     { contact: this.contact },
-    process.env.JWT_SECRET,
+    process.env.SECRET_KEY,
     { expiresIn: '1h' }
   );
   return token;
