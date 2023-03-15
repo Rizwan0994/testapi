@@ -1,4 +1,4 @@
-const Collector = require('../models/collector');
+const Collector = require('../models/Collector');
 
 exports.collector_login = function (req, res) {
   const { contact, password } = req.body;
