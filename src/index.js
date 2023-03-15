@@ -7,7 +7,7 @@ dotenv.config();
 const mongoose=require("mongoose");
 const cors=require("cors");
 const feedbackRouter = require("./routes/feedbackRoutes");
-
+const CollectorRouter = require("./routes/CollectorRoutes");
 mongoose.set('strictQuery', true);
 
 
@@ -24,7 +24,7 @@ next();
 app.use("/users",userRouter);
 app.use("/schedule",scheduleRouter);
 app.use("/feedback",feedbackRouter);
-
+app.use("/collector",CollectorRouter);
 app.get("/",(req,res)=>{
     res.send("Welcome to ScrapHub");
 });
