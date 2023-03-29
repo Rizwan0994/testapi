@@ -2,7 +2,7 @@ const Collector = require('../models/Collector');
 
 exports.collector_login = function (req, res) {
   const { contact, password } = req.body;
-
+  
   Collector.findOne({ contact }, (err, collector) => {
     if (err) {
       console.log(err);
@@ -18,6 +18,6 @@ exports.collector_login = function (req, res) {
     }
 
     const token = collector.generateAuthToken();
-    return res.status(200).json({ message: 'Login successful', token,contact });
+    return res.status(200).json({ message: 'Login successful', token,collector});
   });
 };

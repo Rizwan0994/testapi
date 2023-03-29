@@ -8,6 +8,7 @@ const mongoose=require("mongoose");
 const cors=require("cors");
 const feedbackRouter = require("./routes/feedbackRoutes");
 const CollectorRouter = require("./routes/CollectorRoutes");
+const notificationRouter = require('./routes/collectorNotificationRouter');
 mongoose.set('strictQuery', true);
 
 
@@ -25,6 +26,8 @@ app.use("/users",userRouter);
 app.use("/schedule",scheduleRouter);
 app.use("/feedback",feedbackRouter);
 app.use("/collector",CollectorRouter);
+app.use('/api', notificationRouter);
+
 app.get("/",(req,res)=>{
     res.send("Welcome to ScrapHub");
 });
