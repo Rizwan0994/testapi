@@ -26,12 +26,35 @@ exports.getNotifications = async (req, res) => {
     }
 };
 
+// exports.updateNotificationStatus = async (req, res) => {
+//     const collectorId = req.params.collectorId;
+//     const status = req.body.status;
+//     try {
+//         const updatedNotification = await Notification.findByIdAndUpdate(collectorId, { status }, { new: true });
+//         if (!updatedNotification) {
+//             // If the notification is not updated, send an error response
+//             return res.status(404).json({ error: 'Notification not found' });
+           
+//         }
+//         res.sendStatus(200);
+//     } catch (err) {
+//         res.status(500).send(err);
+//     }
+// };
 
 exports.updateNotificationStatus = async (req, res) => {
     const collectorId = req.params.collectorId;
-    const status = req.body.status;  //schdeule pickup complete or pending
+    const status = req.body.status;
     try {
-        await Notification.findByIdAndUpdate(collectorId, { status });
+        const notification = await Notification.findById(collectorId);
+        if (!notification) {
+            // If the notification is not found, send an error response
+            return res.status(404).json({ error: 'Notification not found' });
+        }
+
+        notification.status = status;
+        await notification.save();
+
         res.sendStatus(200);
     } catch (err) {
         res.status(500).send(err);

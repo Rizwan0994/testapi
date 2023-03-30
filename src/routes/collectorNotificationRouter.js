@@ -3,6 +3,6 @@ const router = express.Router();
 const notificationController = require('../controllers/collectorNotificationController');
 
 router.get('/:collectorId/notifications', notificationController.getNotifications);
-router.put('/:notificationId/status', notificationController.updateNotificationStatus);
+router.put('/:collectorId/status', notificationController.updateNotificationStatus);
 
 module.exports = router;
