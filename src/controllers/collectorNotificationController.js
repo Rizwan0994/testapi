@@ -19,7 +19,7 @@ exports.getNotifications = async (req, res) => {
             // if the status field does not exist, set it to null by default
             await Notification.updateMany({ collectorId }, { $set: { status: null } });
         }
-        const notifications = await Notification.find({ collectorId, status: null });
+        const notifications = await Notification.find({ collectorId });
         res.json(notifications);
     } catch (err) {
         res.status(500).send(err);
