@@ -28,10 +28,10 @@ exports.getNotifications = async (req, res) => {
 
 
 exports.updateNotificationStatus = async (req, res) => {
-    const notificationId = req.params.notificationId;
+    const collectorId = req.params.collectorId;
     const status = req.body.status;  //schdeule pickup complete or pending
     try {
-        await Notification.findByIdAndUpdate(notificationId, { status });
+        await Notification.findByIdAndUpdate(collectorId, { status });
         res.sendStatus(200);
     } catch (err) {
         res.status(500).send(err);
