@@ -35,6 +35,30 @@ app.get("/",(req,res)=>{
 });
 
 
+
+//.....yard.........
+// Define schema for Yard model
+const yardSchema = new mongoose.Schema({
+    title: String,
+    latitude: Number,
+    longitude: Number,
+  });
+  
+  // Create Yard model
+  const Yard = mongoose.model('yards', yardSchema);
+  
+  // Define route to retrieve all yards
+  app.get('/yards', async (req, res) => {
+    try {
+      const yards = await Yard.find({});
+      res.json(yards);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Server error' });
+    }
+  });
+//..............
+
 //db connection
 const PORT=process.env.PORT|| 5000; 
 mongoose.connect(process.env.MONGO_URL)
