@@ -1,6 +1,9 @@
+// Collector.js
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
 const collectorSchema = new mongoose.Schema({
   contact: {
     type: String,
@@ -13,10 +16,10 @@ const collectorSchema = new mongoose.Schema({
 });
 
 collectorSchema.methods.comparePassword = function (password) {
-  if (!password) {
+  if (!password || !this.password) {
     return false;
   }
-  console.log(bcrypt.compareSync(password, this.password));
+  
   return bcrypt.compareSync(password, this.password);
 };
 
@@ -30,4 +33,5 @@ collectorSchema.methods.generateAuthToken = function () {
 };
 
 const Collector = mongoose.model('Collector', collectorSchema);
+
 module.exports = Collector;
