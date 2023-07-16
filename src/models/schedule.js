@@ -26,6 +26,22 @@ const UserSchema = mongoose.Schema(
       type: String,
       default: null,
     },
+        collectorid: {
+      type: String,
+      default: null,
+    },
+        contact: {
+      type: String,
+      default: null,
+    },
+    latitude: {
+      type: double,
+      required: true,
+    },
+    longitude: {
+      type: double,
+      required: true,
+    },
   },
   { timestamps: true }
 );
