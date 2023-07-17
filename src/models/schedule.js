@@ -24,11 +24,11 @@ const UserSchema = mongoose.Schema(
     },
     status: {
       type: String,
-      default: null,
+      default: "null",
     },
         collectorid: {
       type: String,
-      default: null,
+      default: "null",
     },
         contact: {
       type: String,

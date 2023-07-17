@@ -1,13 +1,14 @@
 const scheduleModel=require("../models/schedule");
 
 const createSchedule= async (req,res)=>{
-const {nearestYard,sDate,sTime,itemDetails, longitude, latitude}=req.body;
+const {nearestYard,sDate,sTime,itemDetails,contact, longitude, latitude}=req.body;
 const newSchedule=scheduleModel({
     nearestYard:nearestYard,
     sDate:sDate,
     sTime:sTime,
     itemDetails:itemDetails,
     userId:req.userId,
+    contact:contact,
     latitude: latitude,
     longitude:longitude
 
