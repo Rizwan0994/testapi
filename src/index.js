@@ -10,6 +10,7 @@ const feedbackRouter = require("./routes/feedbackRoutes");
 const CollectorRouter = require("./routes/CollectorRoutes");
 const notificationRouter = require('./routes/collectorNotificationRouter');
 const productRoutes = require('./routes/productRoutes');
+const stripRouter = require('./routes/stripeRoutes');
 mongoose.set('strictQuery', true);
 
 
@@ -29,6 +30,7 @@ app.use("/feedback",feedbackRouter);
 app.use("/collector",CollectorRouter);
 app.use('/api', notificationRouter);
 app.use('/api', productRoutes);
+app.use('/api', stripRouter);
 
 app.get("/",(req,res)=>{
     res.send("Welcome to ScrapHub");
